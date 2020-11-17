@@ -8,39 +8,44 @@
 
 <body>
 	<article>
-		<h2>Cyclic Cellular Automaton 2D</h2>
+		<h2>Cyclic Cellular Automaton 3D</h2>
 		<form>
-			Number of colors:<input type="number" id="cca2d_nb-colors" value="8" min="2" max="37">
+			Number of colors:<input type="number" id="nb-colors" value="8" min="2" max="37">
 			<br/>
-			Threshold:<input type="number" id="cca2d_threshold" value="2" min="1" max="8">
+			Threshold:<input type="number" id="threshold" value="2" min="1" max="8">
 			<br/>
-			<input type="button" value="reset with those values" onclick="resetCCA2D()">
+			<input type="button" value="reset with those values" onclick="resetCCA3D()">
 			<br/>
-			<input type="button" value="start" onclick="startCCA2D()">
+			<input type="button" value="start" onclick="startCCA3D()">
 		</form>
 		<br>
-		<canvas id="cca2d-canvas"></canvas>
+		<canvas id="cca3d-canvas"></canvas>
 	</article>
 
-	<script src="cyclic-cellular-automaton-2d.js"></script>
+	<script src="chroma.min.js"></script>
+	<script type="module">
+		import * as THREE from 'three.module.js';
+	</script>
+	<script src="cyclic-cellular-automaton-common.js"></script>
+	<script src="cyclic-cellular-automaton-3d.js"></script>
 	<script>
 
-		var CCA2Dcontext;
+		var CCA3Dcontext;
 
-		function resetCCA2D() {
+		function resetCCA3D() {
 
-			CCA2Dcontext = CCA2DcreateContext({
-				canvasEl: document.getElementById('cca2d-canvas'),
-				numberOfColors: document.getElementById('cca2d_nb-colors').value,
-				threshold: document.getElementById('cca2d_threshold').value,
+			CCA3Dcontext = CCA3DcreateContext({
+				canvasEl: document.getElementById('cca3d-canvas'),
+				numberOfColors: document.getElementById('nb-colors').value,
+				threshold: document.getElementById('threshold').value,
 				width: 600,
 				height: 400,
 				resolution: 2
 			});
 		}
 
-		function startCCA2D() {
-			CCA2Dstart(CCA2Dcontext, 400)
+		function startCCA3D() {
+			CCA3Dstart(CCA3Dcontext, 400)
 		}
 
 	</script>
